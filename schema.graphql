@@ -1,0 +1,27 @@
+type Post @entity {
+  id: ID!
+  creator: Bytes!
+  postId: BigInt!
+  deadline: BigInt!
+}
+
+type Comment @entity {
+  id: ID!
+  commenter: Bytes!
+  postId: BigInt!
+  commentId: BigInt!
+}
+
+type Like @entity {
+  id: ID!
+  user: Bytes!
+  postId: BigInt!
+  commentId: BigInt!
+}
+
+type Tipped @entity {
+  id: ID!
+  tipper: Bytes!
+  user: Bytes!
+  tip: BigInt!
+}
