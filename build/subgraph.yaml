@@ -17,7 +17,6 @@ dataSources:
         - CommentLiked
         - PostCreated
         - RepliedToPost
-        - UserTipped
       abis:
         - name: PostChain
           file: PostChain/abis/PostChain.json
@@ -28,6 +27,4 @@ dataSources:
           handler: handlePostCreated
         - event: RepliedToPost(indexed address,indexed uint256,indexed uint256)
           handler: handleRepliedToPost
-        - event: UserTipped(address,address,uint256)
-          handler: handleUserTipped
       file: PostChain/PostChain.wasm

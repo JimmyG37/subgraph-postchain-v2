@@ -4,9 +4,8 @@ import {
   CommentLiked as CommentLikedEvent,
   PostCreated as PostCreatedEvent,
   RepliedToPost as RepliedToPostEvent,
-  UserTipped as UserTippedEvent,
 } from "../generated/PostChain/PostChain";
-import { Post, Comment, Like, Tipped } from "../generated/schema";
+import { Post, Comment, Like } from "../generated/schema";
 
 export function handleCommentLiked(event: CommentLikedEvent): void {
   let like = Like.load(
@@ -60,23 +59,6 @@ export function handleRepliedToPost(event: RepliedToPostEvent): void {
   comment.commentId = event.params.commentId;
 
   comment.save();
-}
-
-export function handleUserTipped(event: UserTippedEvent): void {
-  let tipped = Tipped.load(
-    getIdFromEventParams(event.params.tip, event.params.tipper)
-  );
-
-  if (!tipped) {
-    tipped = Tipped.load(
-      getIdFromEventParams(event.params.tip, event.params.tipper)
-    );
-  }
-  tipped!.tipper = event.params.tipper;
-  tipped!.user = event.params.user;
-  tipped!.tip = event.params.tip;
-
-  tipped!.save();
 }
 
 function getIdFromEventParams(postId: BigInt, userAddress: Address): string {

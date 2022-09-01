@@ -18,10 +18,3 @@ type Like @entity {
   postId: BigInt!
   commentId: BigInt!
 }
-
-type Tipped @entity {
-  id: ID!
-  tipper: Bytes!
-  user: Bytes!
-  tip: BigInt!
-}
