@@ -18,3 +18,35 @@ type Like @entity {
   postId: BigInt!
   commentId: BigInt!
 }
+
+type ActiveItem @entity {
+  id: ID!
+  buyer: Bytes! # Address
+  seller: Bytes!
+  nftAddress: Bytes!
+  postId: BigInt!
+  price: BigInt
+}
+
+type ItemListed @entity {
+  id: ID!
+  seller: Bytes!
+  nftAddress: Bytes!
+  postId: BigInt!
+  price: BigInt
+}
+
+type ItemCanceled @entity {
+  id: ID!
+  seller: Bytes!
+  nftAddress: Bytes!
+  postId: BigInt!
+}
+
+type ItemBought @entity {
+  id: ID!
+  buyer: Bytes!
+  nftAddress: Bytes!
+  postId: BigInt!
+  price: BigInt
+}
